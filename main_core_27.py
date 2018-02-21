@@ -1,6 +1,6 @@
-import sys,mysql.connector,datetime
+import mysql.connector,datetime
 
-#Defibne our data base connectivity and common variables
+#Define our data base connectivity and common variables
 worker = ''
 progee = ''
 starter = ''
@@ -13,19 +13,16 @@ hostname = '192.168.200.10'
 username = 'scanner'
 password = '%%%%%%%'
 database = 'rabendb'
-
+#Checking the date
 now = datetime.datetime.today()
 
+#Function definition for p programm
 def executeSQLp(conn,zone_from,zone_to,login,now,shipm):
     cursor = conn.cursor()
     now = datetime.datetime.today()
     query = "INSERT INTO rabendb.SHIPMENT_MOVE (FROM_ZONE,TO_ZONE,LOGIN,WHENADD,SHIPM)\
              VALUES ('%s','%s','%s','%s',%s);" % (zone_from,zone_to,login,now,shipm)
     cursor.execute(query)
-#    result = cursor.fetchall()
-#    for row in result:
-#        print row[0], row[1]
-
 
 worker = raw_input("Enter your scan working number/name: ")
 
@@ -81,8 +78,3 @@ while progee == 'p':
                 starter = raw_input()
     else:
         break
-
-
-#connection = mysql.connector.connect(host=hostname, user=username, passwd=password, db=database)
-#executeSQLp(connection)
-#connection.close()
