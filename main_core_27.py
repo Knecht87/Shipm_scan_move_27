@@ -1,4 +1,5 @@
-import mysql.connector,datetime
+#import mysql.connector,datetime
+import datetime
 
 #Define our data base connectivity and common variables
 worker = ''
@@ -17,12 +18,12 @@ database = 'rabendb'
 now = datetime.datetime.today()
 
 #Function definition for p programm
-def executeSQLp(conn,zone_from,zone_to,login,now,shipm):
-    cursor = conn.cursor()
-    now = datetime.datetime.today()
-    query = "INSERT INTO rabendb.SHIPMENT_MOVE (FROM_ZONE,TO_ZONE,LOGIN,WHENADD,SHIPM)\
-             VALUES ('%s','%s','%s','%s',%s);" % (zone_from,zone_to,login,now,shipm)
-    cursor.execute(query)
+#def executeSQLp(conn,zone_from,zone_to,login,now,shipm):
+#    cursor = conn.cursor()
+#    now = datetime.datetime.today()
+#    query = "INSERT INTO rabendb.SHIPMENT_MOVE (FROM_ZONE,TO_ZONE,LOGIN,WHENADD,SHIPM)\
+#             VALUES ('%s','%s','%s','%s',%s);" % (zone_from,zone_to,login,now,shipm)
+#    cursor.execute(query)
 
 worker = raw_input("Enter your scan working number/name: ")
 
@@ -68,9 +69,17 @@ while progee == 'p':
                 zone_to = raw_input()
             else:
                 print "You have finished input\nShipment:%s\nMoving: %s -> %s" % (shipm,zone_from,zone_to)
-                connection = mysql.connector.connect(host=hostname, user=username, passwd=password, db=database)
-                executeSQLp(connection,zone_from,zone_to,worker,now,shipm)
-                connection.close()
+ #               connection = mysql.connector.connect(host=hostname, user=username, passwd=password, db=database)
+ #               executeSQLp(connection,zone_from,zone_to,worker,now,shipm)
+ #               connection.close()
+ # after several attempts to update python 2.4 on a server to python 2.7 to import mysqlconnector
+ # as and implementation flash decision comes to comment the connector and operate with local .csv file
+ # so after all variables are set we add line to the .csv file
+ # hope to correct it with DB SQL later on
+                variable_set_string = "%s; %s; %s; %s; %s;" % (shipm,zone_from,zone_to,worker,now)
+                file = open('p_progee_scan_file','w')
+                file.write(variable_set_string)
+                file.close()
             print "Another scan?\nk - go on\nq - quit"
             starter = raw_input()
             while starter != 'k' and starter!= 'q':
