@@ -76,8 +76,9 @@ while progee == 'p':
  # as and implementation flash decision comes to comment the connector and operate with local .csv file
  # so after all variables are set we add line to the .csv file
  # hope to correct it with DB SQL later on
-                variable_set_string = "%s; %s; %s; %s; %s;" % (shipm,zone_from,zone_to,worker,now)
-                file = open('p_progee_scan_file','w')
+                now = datetime.datetime.today()
+                variable_set_string = "%s; %s; %s; %s; %s;\n" % (shipm,zone_from,zone_to,worker,now)
+                file = open('p_progee_scan_file','a')
                 file.write(variable_set_string)
                 file.close()
             print "Another scan?\nk - go on\nq - quit"
