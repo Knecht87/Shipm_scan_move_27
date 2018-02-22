@@ -40,7 +40,8 @@ while progee == 'i':
     starter = raw_input ()
     while starter != 'k' and starter != 'q':
         print "Only k or q are available, try again:"
-        starter = input()
+        starter = ''
+        starter = raw_input()
     while starter == 'k':
         print "First scan shipment:"
         shipm = raw_input()
@@ -85,7 +86,8 @@ while progee == 'p':
     starter = raw_input ()
     while starter != 'k' and starter != 'q':
         print "Only k or q are available, try again:"
-        starter = input()
+        starter = ''
+        starter = raw_input()
     while starter == 'k':
         print "First scan shipment:"
         shipm = raw_input()
