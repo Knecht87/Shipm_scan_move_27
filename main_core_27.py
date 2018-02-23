@@ -70,7 +70,7 @@ while progee == 'i':
  # hope to correct it with DB SQL later on
                 now = datetime.datetime.today()
                 variable_set_string = "%s; %s; %s; %s;\n" % (shipm,zone_where,worker,now)
-                file = open('i_progee_scan_file','a')
+                file = open('i_progee_scan_file.csv','a')
                 file.write(variable_set_string)
                 file.close()
             print "Another scan?\nk - go on\nq - quit"
@@ -121,7 +121,7 @@ while progee == 'p':
  # hope to correct it with DB SQL later on
                 now = datetime.datetime.today()
                 variable_set_string = "%s; %s; %s; %s; %s;\n" % (shipm,zone_from,zone_to,worker,now)
-                file = open('p_progee_scan_file','a')
+                file = open('p_progee_scan_file.csv','a')
                 file.write(variable_set_string)
                 file.close()
             print "Another scan?\nk - go on\nq - quit"
