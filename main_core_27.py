@@ -42,8 +42,13 @@ while progee == 'i':
         print "Only k or q are available, try again:"
         starter = ''
         starter = raw_input()
+    print "Scan zone:"
+    zone_where = raw_input()
+    while zone_where == '' or ' ' in zone_from or zone_from == '0':
+        print "zone_from can't be empty/contain spaces, check it and try again"
+        zone_where = raw_input()
     while starter == 'k':
-        print "First scan shipment:"
+        print "Scan shipment:"
         shipm = raw_input()
         try:
             shipm = int(shipm)
@@ -54,11 +59,11 @@ while progee == 'i':
                 print "Incorrect shipment value try again:"
                 shipm = raw_input()
                 shipm = int(shipm)
-            else: print "You are ready to scan zone:"
-            zone_where = raw_input()
-            while zone_where == '' or ' ' in zone_from or zone_from == '0':
-                print "zone_from can't be empty/contain spaces, check it and try again"
-                zone_where = raw_input()
+ #           else: print "You are ready to scan zone:"
+ #           zone_where = raw_input()
+ #           while zone_where == '' or ' ' in zone_from or zone_from == '0':
+ #               print "zone_from can't be empty/contain spaces, check it and try again"
+ #               zone_where = raw_input()
             else:
                 print "You have finished input\nShipment:%s\nWhere: %s" % (shipm,zone_where)
  #               connection = mysql.connector.connect(host=hostname, user=username, passwd=password, db=database)
