@@ -62,7 +62,7 @@ while progee == 'i':
             else:
                 print "You have finished input\nShipment:%s\nWhere: %s" % (shipm,zone_where)
                 now = datetime.datetime.today()
-                variable_set_string = "%s; %s; %s; %s;\n" % (shipm,zone_where,worker,now)
+                variable_set_string = "%s, null, null, %s, %s, %s\n" % (shipm,zone_where,worker,now)
                 file = open('i_progee_scan_file.csv','a')
                 file.write(variable_set_string)
                 file.close()
@@ -113,7 +113,7 @@ while progee == 'p':
  # so after all variables are set we add line to the .csv file
  # hope to correct it with DB SQL later on
                 now = datetime.datetime.today()
-                variable_set_string = "%s; %s; %s; %s; %s;\n" % (shipm,zone_from,zone_to,worker,now)
+                variable_set_string = "%s, %s, %s, null, %s, %s\n" % (shipm,zone_from,zone_to,worker,now)
                 file = open('p_progee_scan_file.csv','a')
                 file.write(variable_set_string)
                 file.close()
