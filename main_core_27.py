@@ -1,5 +1,6 @@
 #import mysql.connector,datetime
 import datetime
+import cx_Oracle
 
 #Define our data base connectivity and common variables
 worker = ''
@@ -10,19 +11,19 @@ shipm = 0
 zone_from = ''
 zone_to = ''
 
-hostname = '192.168.200.10'
-username = 'scanner'
-password = '%%%%%%%'
-database = 'rabendb'
+#hostname = '172.25.1.98'
+#username = 'edek'
+#password = '$$$$$$$$$'
+#database = 'UAPROD13'
 #Checking the date
 #now = datetime.datetime.today()
 
 #Function definition for p programm
-#def executeSQLp(conn,zone_from,zone_to,login,now,shipm):
+#def executeSQL(conn,zone_from,zone_to,login,now,shipm):
 #    cursor = conn.cursor()
 #    now = datetime.datetime.today()
-#    query = "INSERT INTO rabendb.SHIPMENT_MOVE (FROM_ZONE,TO_ZONE,LOGIN,WHENADD,SHIPM)\
-#             VALUES ('%s','%s','%s','%s',%s);" % (zone_from,zone_to,login,now,shipm)
+#    query = "INSERT INTO vitaliy.INV_MOVE_TABLE (DOSVLG,FR_ZONE,TO_ZONE,IN_ZONE,WERKNM,SC_DATE,ID_VAL)\
+#             VALUES (%s,'%s','%s','%s','%s',%s,null);" % (shipm,fr_zone,to_zone,in_zone,werknm,now,id_val)
 #    cursor.execute(query)
 
 worker = raw_input("Enter your scan working number/name: ")
@@ -62,10 +63,13 @@ while progee == 'i':
             else:
                 print "You have finished input\nShipment:%s\nWhere: %s" % (shipm,zone_where)
                 now = datetime.datetime.today()
-                variable_set_string = "%s, null, null, %s, %s, %s\n" % (shipm,zone_where,worker,now)
-                file = open('i_progee_scan_file.csv','a')
-                file.write(variable_set_string)
-                file.close()
+		        connection = cx_Oracle.connect('$$$$$$$$$$$$$$$')
+		        print connection.version
+		        connection.close()
+#                variable_set_string = "%s; null; null; %s; %s; %s; null\n" % (shipm,zone_where,worker,now)
+#                file = open('i_progee_scan_file.csv','a')
+#                file.write(variable_set_string)
+#                file.close()
             print "Another scan?\nk - go on\nq - quit"
             starter = raw_input()
             while starter != 'k' and starter!= 'q':
@@ -105,7 +109,9 @@ while progee == 'p':
                 zone_to = raw_input()
             else:
                 print "You have finished input\nShipment:%s\nMoving: %s -> %s" % (shipm,zone_from,zone_to)
- #               connection = mysql.connector.connect(host=hostname, user=username, passwd=password, db=database)
+                connection = cx_Oracle.connect('$$$$$$$$$$$$$$$')
+		        print connection.version
+		        connection.close()
  #               executeSQLp(connection,zone_from,zone_to,worker,now,shipm)
  #               connection.close()
  # after several attempts to update python 2.4 on a server to python 2.7 to import mysqlconnector
@@ -113,10 +119,10 @@ while progee == 'p':
  # so after all variables are set we add line to the .csv file
  # hope to correct it with DB SQL later on
                 now = datetime.datetime.today()
-                variable_set_string = "%s, %s, %s, null, %s, %s\n" % (shipm,zone_from,zone_to,worker,now)
-                file = open('p_progee_scan_file.csv','a')
-                file.write(variable_set_string)
-                file.close()
+ #               variable_set_string = "%s; %s; %s; null; %s; %s; null" % (shipm,zone_from,zone_to,worker,now)
+ #               file = open('p_progee_scan_file.csv','a')
+ #               file.write(variable_set_string)
+ #               file.close()
             print "Another scan?\nk - go on\nq - quit"
             starter = raw_input()
             while starter != 'k' and starter!= 'q':
