@@ -63,9 +63,9 @@ while progee == 'i':
             else:
                 print "You have finished input\nShipment:%s\nWhere: %s" % (shipm,zone_where)
                 now = datetime.datetime.today()
-		        connection = cx_Oracle.connect('$$$$$$$$$$$$$$$')
-		        print connection.version
-		        connection.close()
+                connection = cx_Oracle.connect('$$$$$$$$$$$$$$$')
+                print connection.version
+                connection.close()
 #                variable_set_string = "%s; null; null; %s; %s; %s; null\n" % (shipm,zone_where,worker,now)
 #                file = open('i_progee_scan_file.csv','a')
 #                file.write(variable_set_string)
@@ -110,8 +110,8 @@ while progee == 'p':
             else:
                 print "You have finished input\nShipment:%s\nMoving: %s -> %s" % (shipm,zone_from,zone_to)
                 connection = cx_Oracle.connect('$$$$$$$$$$$$$$$')
-		        print connection.version
-		        connection.close()
+                print connection.version
+                connection.close()
  #               executeSQLp(connection,zone_from,zone_to,worker,now,shipm)
  #               connection.close()
  # after several attempts to update python 2.4 on a server to python 2.7 to import mysqlconnector
